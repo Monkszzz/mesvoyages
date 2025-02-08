@@ -1,35 +1,47 @@
 {% extends "baseadmin.html.twig" %}
 
 {% block body %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Ville</th>
-            <th>Pays</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for visite in visites %}
-        <tr>
-            <td>
-                <h5 class="text-primary">
-                    {{ visite.ville }}
-                </h5>
-            </td>
-            <td>
-                {{ visite.pays }}
-            </td>
-            <td>
-                {{ visite.datecreationstring }}
-            </td>
-            <td>
-                <a href="#" class="btn btn-secondary">Éditer</a>
-                <a href="{{ path('admin.voyage.suppr', {id:visite.id}) }}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer {{ visite.ville }} ?')">Supprimer</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Liste des Voyages</h2>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Ville</th>
+                <th scope="col">Pays</th>
+                <th scope="col">Date</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for visite in visites %}
+                <tr>
+                    <td>
+                        <h5 class="text-primary m-0">{{ visite.ville }}</h5>
+                    </td>
+                    <td>{{ visite.pays }}</td>
+                    <td>{{ visite.datecreationstring }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('admin.voyage.edit', {id: visite.id}) }}" class="btn btn-secondary btn-sm me-2">
+                            <i class="bi bi-pencil-square"></i> Éditer
+                        </a>
+                        <a href="{{ path('admin.voyage.suppr', {id: visite.id}) }}" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ visite.ville }} ?')">
+                            <i class="bi bi-trash"></i> Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted">Aucune visite enregistrée.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Test d'un bouton Bootstrap pour vérifier le bon chargement -->
+    <div class="text-center mt-4">
+        <button class="btn btn-success">Test Bootstrap</button>
+    </div>
+</div>
 {% endblock %}
