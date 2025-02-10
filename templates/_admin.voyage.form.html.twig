@@ -1,0 +1,28 @@
+{{ form_start(formvisite) }}
+<div class="row g-3">
+    <div class="col-md-6">
+        {{ form_row(formvisite.datecreation) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(formvisite.note) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(formvisite.tempmin) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(formvisite.tempmax) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(formvisite.ville) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(formvisite.pays) }}
+    </div>
+    <div class="col-12">
+        {{ form_row(formvisite.avis) }}
+    </div>
+</div>
+<div class="text-center mt-4">
+    {{ form_row(formvisite.submit) }} {# Affiche le bouton défini dans VisiteType.php #}
+</div>
+{{ form_end(formvisite) }}

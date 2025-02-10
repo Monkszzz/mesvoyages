@@ -69,7 +69,7 @@ class Visite
         return $this->datecreation;
     }
 
-    public function setDatecreation(?\DateTimeInterface $datecreation): static
+    public function setDatecreation(?\DateTimeInterface $datecreation): self
     {
         $this->datecreation = $datecreation;
 
@@ -123,12 +123,9 @@ class Visite
 
         return $this;
     }
-    public function getDatecreationString() : string
+
+    public function getDatecreationString(): string
     {
-        if($this->datecreation == null){
-            return "";
-        }else{
-            return $this->datecreation->format('d/m/Y');
-        }
+        return $this->datecreation ? $this->datecreation->format('d/m/Y') : "";
     }
-}
+} 

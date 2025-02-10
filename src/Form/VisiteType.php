@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\Visite;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
 
 class VisiteType extends AbstractType
 {
@@ -16,9 +16,10 @@ class VisiteType extends AbstractType
         $builder
             ->add('ville')
             ->add('pays')
-            ->add('datecreation', null, [
+            ->add('datecreation', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'date'
+                'required' => false,
+                'label' => 'Date',
             ])
             ->add('note')
             ->add('avis')
