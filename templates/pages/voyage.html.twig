@@ -14,6 +14,10 @@
         {% endif %}
         
         <h5 class="mt-5">🌡 entre {{ visite.tempmin }}° et {{ visite.tempmax }}°</h5>
+        <p class="mt-5"><strong>Environnements :</strong></p>
+        {% for environnement in visite.environnements %}
+            {{ environnement.nom }}
+        {% endfor %}
     </div>
     
     <div class="col">
