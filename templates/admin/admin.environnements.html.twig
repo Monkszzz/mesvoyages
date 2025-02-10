@@ -1,0 +1,39 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Gestion des Environnements</h2>
+
+        <!-- Formulaire pour ajouter un nouvel environnement -->
+        <form class="form-inline m-1" method="POST" action="{{ path('admin.environnement.ajout') }}">
+            <div class="form-group mr-1 mb-2">
+                <input type="text" class="form-control" name="nom" placeholder="Nom de l'environnement" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+        </form>
+
+        <!-- Tableau des environnements existants -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for environnement in environnements %}
+                    <tr>
+                        <td>{{ environnement.nom }}</td>
+                        <td>
+                            <a href="{{ path('admin.environnement.suppr', { id: environnement.id }) }}" 
+                               class="btn btn-danger btn-sm" 
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ environnement.nom }} ?')">
+                                Supprimer
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
