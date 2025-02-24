@@ -29,7 +29,7 @@ class AdminVoyagesController extends AbstractController {
         ]);
     }
     
-    #[Route('/admin/suppr/{id}', name: 'admin.voyage.suppr')]
+    #[Route('/admin/suppr/{id}', name: 'admin.voyage.suppr', methods: ['POST'])]
     public function suppr(int $id): Response {
         $visite = $this->repository->find($id);
 
@@ -45,30 +45,31 @@ class AdminVoyagesController extends AbstractController {
         return $this->redirectToRoute('admin.voyages');
     }
     
-    #[Route('/admin/edit/{id}', name: 'admin.voyage.edit')]
-    public function edit(int $id, Request $request): Response {
-        $visite = $this->repository->find($id);
+ #[Route('/admin/edit/{id}', name: 'admin.voyage.edit')]
+public function edit(int $id, Request $request): Response {
+    $visite = $this->repository->find($id);
 
-        if (!$visite) {
-            $this->addFlash('error', 'Visite non trouvée.');
-            return $this->redirectToRoute('admin.voyages');
-        }
-
-        $formVisite = $this->createForm(VisiteType::class, $visite);
-        $formVisite->handleRequest($request);
-
-        if ($formVisite->isSubmitted() && $formVisite->isValid()) {
-            $this->em->persist($visite);
-            $this->em->flush();
-
-            $this->addFlash('success', 'Visite modifiée avec succès.');
-            return $this->redirectToRoute('admin.voyages');
-        }
-
-        return $this->render("admin/admin.voyage.edit.html.twig", [
-            'formvisite' => $formVisite->createView()
-        ]);
+    if (!$visite) {
+        $this->addFlash('error', 'Visite non trouvée.');
+        return $this->redirectToRoute('admin.voyages');
     }
+
+    $formVisite = $this->createForm(VisiteType::class, $visite);
+    $formVisite->handleRequest($request);
+
+    if ($formVisite->isSubmitted() && $formVisite->isValid()) {
+        $this->em->persist($visite);
+        $this->em->flush();
+
+        $this->addFlash('success', 'Visite modifiée avec succès.');
+        return $this->redirectToRoute('admin.voyages');
+    }
+
+    return $this->render("admin/admin.voyage.edit.html.twig", [
+        'formvisite' => $formVisite->createView(),
+        'visite' => $visite // ✅ Correction : on passe bien la variable au template
+    ]);
+}
     
     #[Route('/admin/ajout', name: 'admin.voyage.ajout')]
     public function ajout(Request $request): Response {
