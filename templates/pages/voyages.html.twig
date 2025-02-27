@@ -12,6 +12,7 @@
                 <form class="form-inline mt-l" method="POST" action="{{ path('voyages.findallequal', {champ:'ville'}) }}">
                     <div class="form-group mr-l mb-2">
                         <input type="text" class="sm" name="recherche">
+                        <input type="hidden" name="token" value="{{ csrf_token('filtre_ville') }}"
                         <button type="submit" class="btn btn-primary mb-2 btn-sm">filtrer</button>
                     </div>
                 </form>
@@ -25,6 +26,7 @@
                 <form class="form-inline mt-l" method="POST" action="{{ path('voyages.findallequal', {champ:'pays'}) }}">
                     <div class="form-group mr-l mb-2">
                         <input type="text" class="sm" name="recherche">
+                        <input type="hidden" name="token" value="{{ csrf_token('filtre_pays') }}"
                         <button type="submit" class="btn btn-primary mb-2 btn-sm">filtrer</button>
                     </div>
                 </form>

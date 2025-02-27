@@ -30,7 +30,7 @@ class Visite
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $datecreation = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $note = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -87,6 +87,12 @@ class Visite
     public function getNote(): ?int
     {
         return $this->note;
+    }
+    
+    public function setNote(?int $note): self
+    {
+        $this->note = $note;
+        return $this;
     }
 
     public function getAvis(): ?string
