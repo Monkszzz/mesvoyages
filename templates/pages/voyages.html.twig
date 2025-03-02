@@ -7,13 +7,13 @@
         <th class="text-left align-top" scope="col">
             Ville
             <div>
-                <a href="{{ path('voyages.sort', {champ: 'ville', ordre: 'ASC'}) }}" class="btn btn-primary btn-sm" role="button"><</a>
-                <a href="{{ path('voyages.sort', {champ: 'ville', ordre: 'DESC'}) }}" class="btn btn-primary btn-sm" role="button">></a>
+                <a href="{{ path('voyages.sort', {champ: 'ville', ordre: 'ASC'}) }}" class="btn btn-primary btn-sm" role="button">&lt;</a>
+                <a href="{{ path('voyages.sort', {champ: 'ville', ordre: 'DESC'}) }}" class="btn btn-primary btn-sm" role="button">&gt;</a>
                 <form class="form-inline mt-l" method="POST" action="{{ path('voyages.findallequal', {champ:'ville'}) }}">
                     <div class="form-group mr-l mb-2">
                         <input type="text" class="sm" name="recherche">
-                        <input type="hidden" name="token" value="{{ csrf_token('filtre_ville') }}"
-                        <button type="submit" class="btn btn-primary mb-2 btn-sm">filtrer</button>
+                        <input type="hidden" name="token" value="{{ csrf_token('filtre_ville') }}">
+                        <button type="submit" class="btn btn-primary mb-2 btn-sm">Filtrer</button>
                     </div>
                 </form>
             </div>
@@ -21,13 +21,13 @@
         <th class="text-left align-top" scope="col">
             Pays
             <div>
-                <a href="{{ path('voyages.sort', {champ: 'pays', ordre: 'ASC'}) }}" class="btn btn-primary btn-sm" role="button"><</a>
-                <a href="{{ path('voyages.sort', {champ: 'pays', ordre: 'DESC'}) }}" class="btn btn-primary btn-sm" role="button">></a>
+                <a href="{{ path('voyages.sort', {champ: 'pays', ordre: 'ASC'}) }}" class="btn btn-primary btn-sm" role="button">&lt;</a>
+                <a href="{{ path('voyages.sort', {champ: 'pays', ordre: 'DESC'}) }}" class="btn btn-primary btn-sm" role="button">&gt;</a>
                 <form class="form-inline mt-l" method="POST" action="{{ path('voyages.findallequal', {champ:'pays'}) }}">
                     <div class="form-group mr-l mb-2">
                         <input type="text" class="sm" name="recherche">
-                        <input type="hidden" name="token" value="{{ csrf_token('filtre_pays') }}"
-                        <button type="submit" class="btn btn-primary mb-2 btn-sm">filtrer</button>
+                        <input type="hidden" name="token" value="{{ csrf_token('filtre_pays') }}">
+                        <button type="submit" class="btn btn-primary mb-2 btn-sm">Filtrer</button>
                     </div>
                 </form>
             </div>
@@ -35,15 +35,15 @@
         <th class="text-end align-top" scope="col">
             Note
             <div>
-                <a href="{{ path('voyages.sort', {champ: 'note', ordre: 'ASC'}) }}" class="btn btn-primary btn-sm" role="button"><</a>
-                <a href="{{ path('voyages.sort', {champ: 'note', ordre: 'DESC'}) }}" class="btn btn-primary btn-sm" role="button">></a>
+                <a href="{{ path('voyages.sort', {champ: 'note', ordre: 'ASC'}) }}" class="btn btn-primary btn-sm" role="button">&lt;</a>
+                <a href="{{ path('voyages.sort', {champ: 'note', ordre: 'DESC'}) }}" class="btn btn-primary btn-sm" role="button">&gt;</a>
             </div>
         </th>
         <th class="text-center align-top" scope="col">
             Date
             <div>
-                <a href="{{ path('voyages.sort', {champ: 'datecreation', ordre: 'ASC'}) }}" class="btn btn-primary btn-sm" role="button"><</a>
-                <a href="{{ path('voyages.sort', {champ: 'datecreation', ordre: 'DESC'}) }}" class="btn btn-primary btn-sm" role="button">></a>
+                <a href="{{ path('voyages.sort', {champ: 'datecreation', ordre: 'ASC'}) }}" class="btn btn-primary btn-sm" role="button">&lt;</a>
+                <a href="{{ path('voyages.sort', {champ: 'datecreation', ordre: 'DESC'}) }}" class="btn btn-primary btn-sm" role="button">&gt;</a>
             </div>
         </th>
     </tr>

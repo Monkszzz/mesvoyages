@@ -31,6 +31,7 @@ class Visite
     private ?\DateTimeInterface $datecreation = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\Range(min: 0, max:20)]
     private ?int $note = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -40,6 +41,7 @@ class Visite
     private ?int $tempmin = null;
 
     #[ORM\Column(nullable: true)]
+    #[ Assert\GreaterThan(propertyPath:"tempmin")]
     private ?int $tempmax = null;
 
     #[ORM\ManyToMany(targetEntity: Environnement::class)]
@@ -73,16 +75,63 @@ class Visite
     {
         return $this->ville;
     }
+    
+    public function setVille(string $ville): self
+{
+    $this->ville = $ville;
+    return $this;
+}
 
     public function getPays(): ?string
     {
         return $this->pays;
     }
+    
+    public function setPays(string $pays): self
+{
+    $this->pays = $pays;
+    return $this;
+}
+public function setId(?int $id) {
+    $this->id = $id;
+    return $this;
+}
+
+public function setAvis(?string $avis) {
+    $this->avis = $avis;
+    return $this;
+}
+
+public function setTempmin(?int $tempmin) {
+    $this->tempmin = $tempmin;
+    return $this;
+}
+
+public function setTempmax(?int $tempmax) {
+    $this->tempmax = $tempmax;
+    return $this;
+}
+
+public function setEnvironnements(Collection $environnements) {
+    $this->environnements = $environnements;
+    return $this;
+}
+
+public function setUpdatedAt(?\DateTimeImmutable $updatedAt) {
+    $this->updatedAt = $updatedAt;
+    return $this;
+}
 
     public function getDateCreation(): ?\DateTimeInterface
     {
         return $this->datecreation;
     }
+    
+    public function setDateCreation(\DateTimeInterface $date): self
+{
+    $this->datecreation = $date;
+    return $this;
+}
 
     public function getNote(): ?int
     {
