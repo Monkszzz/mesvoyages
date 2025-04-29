@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84c17a07feef230f07c0d5b823ec87dd",
+    "content-hash": "14a8ec1758b04ce203b5e233ea0a1f53",
     "packages": [
         {
             "name": "composer/semver",
@@ -2071,6 +2071,32 @@
                 "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
             "time": "2024-09-11T13:17:53+00:00"
+        },
+        {
+            "name": "symfony/apache-pack",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/apache-pack.git",
+                "reference": "450b8490bd887de3f29390e254f9a5025353c173"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/apache-pack/zipball/450b8490bd887de3f29390e254f9a5025353c173",
+                "reference": "450b8490bd887de3f29390e254f9a5025353c173",
+                "shasum": ""
+            },
+            "type": "metapackage",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A pack for Apache support in Symfony",
+            "support": {
+                "issues": "https://github.com/symfony/apache-pack/issues",
+                "source": "https://github.com/symfony/apache-pack/tree/master"
+            },
+            "time": "2017-11-23T14:58:24+00:00"
         },
         {
             "name": "symfony/asset",
