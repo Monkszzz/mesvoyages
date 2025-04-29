@@ -209,22 +209,25 @@ public function setUpdatedAt(?\DateTimeImmutable $updatedAt) {
     }
     
     #[Assert\Callback]
-    public function validate(ExecutionContextInterface $context) {
-        $file = $this->getImageFile();
-        if($file != null && $file != "") {
-            $poids = @filesize($file);
-            if($poids != false && $poids > 512000){
-                $context->buildViolation("Cette image est trop lourde (500Ko Max)")
-                        ->atPath('imageFile')
-                        ->addViolation();
-            }
-            $infosImage = @getimagesize($file);
-            if(infosImage == false){
-                $context->buildViolation("Ce fichier n'est pas une image")
-                        ->atPath('imageFile')
-                        ->addViolation();
-            }
+public function validate(ExecutionContextInterface $context): void
+{
+    $file = $this->getImageFile();
+
+    if ($file !== null && $file !== '') {
+        $poids = @filesize($file);
+        if ($poids !== false && $poids > 512000) {
+            $context->buildViolation("Cette image est trop lourde (500Ko Max)")
+                    ->atPath('imageFile')
+                    ->addViolation();
         }
-        
+
+        $infosImage = @getimagesize($file);
+        if (!$infosImage) {
+            $context->buildViolation("Ce fichier n'est pas une image")
+                    ->atPath('imageFile')
+                    ->addViolation();
+        }
     }
+}
+
 }
