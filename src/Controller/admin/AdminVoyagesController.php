@@ -86,7 +86,9 @@ public function edit(int $id, Request $request): Response {
         }
 
         return $this->render("admin/admin.voyage.ajout.html.twig", [
-            'formvisite' => $formVisite->createView()
-        ]);
+    'formvisite' => $formVisite->createView(),
+    'visite' => $visite // ✅ ajout de la variable manquante
+]);
+
     }
 }
